@@ -1,5 +1,12 @@
 import { FormType } from '../types';
 
+const checkInput = (validate: string) => !validate || validate.trim() === '';
+
+const testInput = (reg: RegExp, validate: string) => !reg.test(validate);
+
+const checkLength = (validate: string, num: number = 1000) =>
+  validate.length > num;
+
 export const validate = ({ name, age, details, phone, email }: FormType) => {
   const errors: {
     name?: string;
@@ -8,31 +15,31 @@ export const validate = ({ name, age, details, phone, email }: FormType) => {
     email?: string;
     details?: string;
   } = {};
-  if (!name || name.trim() === '') {
-    errors.name = 'Name is required';
-  }
+  if (checkInput(name)) errors.name = 'Name is required';
 
-  if (!age || age.trim() === '') {
+  if (checkInput(age)) {
     errors.age = 'Age is required';
-  } else if (!/^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/g.test(age)) {
+  } else if (
+    testInput(/^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/g, age)
+  ) {
     errors.age = 'Invalid Age';
   }
 
-  if (!phone || age.trim() === '') {
+  if (checkInput(phone)) {
     errors.phone = 'Phone number is required';
   } else if (
-    !/^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/g.test(phone)
+    testInput(/^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/g, phone)
   ) {
     errors.phone = 'Invalid phone number';
   }
 
-  if (!email || email.trim() === '') {
+  if (checkInput(email)) {
     errors.email = 'Email is required';
-  } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(email)) {
+  } else if (testInput(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i, email)) {
     errors.email = 'Invalid email address';
   }
 
-  if (details.length > 1000) {
+  if (checkLength(details)) {
     errors.details = "Your details can't be more than 1000 characters";
   }
 
