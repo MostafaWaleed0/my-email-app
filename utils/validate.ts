@@ -19,16 +19,17 @@ export const validate = ({ name, age, details, phone, email }: FormType) => {
 
   if (checkInput(age)) {
     errors.age = 'Age is required';
-  } else if (
-    testInput(/^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/g, age)
-  ) {
+  } else if (testInput(/^[1-9]?[0-9]{1}$|^100$/, age)) {
     errors.age = 'Invalid Age';
   }
 
   if (checkInput(phone)) {
     errors.phone = 'Phone number is required';
   } else if (
-    testInput(/^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/g, phone)
+    testInput(
+      /^\s*(?:\+?(\d{1,3}))?[-. (]*(\d{3})[-. )]*(\d{3})[-. ]*(\d{4})(?: *x(\d+))?\s*$/im,
+      phone
+    )
   ) {
     errors.phone = 'Invalid phone number';
   }
