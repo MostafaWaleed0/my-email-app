@@ -41,8 +41,7 @@ textarea {
   width: 100%;
 }
 
-input + p,
-textarea + p {
+:is(input, textarea) + p {
   color: red;
   font-weight: 500;
 }
