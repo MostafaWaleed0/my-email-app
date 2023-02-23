@@ -61,7 +61,7 @@ export default function Home() {
   }
 
   return (
-    <form className="flow" ref={form} name="" onSubmit={handleSubmit}>
+    <form className="flow" ref={form} onSubmit={handleSubmit}>
       <div className="grid-template" data-col="50-50">
         <div>
           <Input
