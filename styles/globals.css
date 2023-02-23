@@ -48,7 +48,7 @@ textarea {
 
 textarea {
   border: 2px solid #d900b5;
-  resize: none;
+  resize: auto;
 }
 
 .grid-template[data-col='50-50'] {
