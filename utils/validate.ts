@@ -1,4 +1,4 @@
-import { FormType } from '../types';
+import { FormType } from '../lib/types';
 
 const checkInput = (validate: string) => !validate || validate.trim() === '';
 

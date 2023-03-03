@@ -3,7 +3,7 @@ import { useRef, useState } from 'react';
 import { validate } from '../utils/validate';
 import Input from '../components/Input';
 import TextArea from '../components/TextArea';
-import { FormType } from '../types';
+import { FormType } from '../lib/types';
 
 interface IErrors extends Partial<FormType> {}
 
