@@ -69,8 +69,7 @@ export default function Home() {
             type="text"
             id="name"
             onChange={handleChange}
-            error={Boolean(errors.name)}
-            errorMessage={errors.name ? errors.name : ''}
+            error={errors?.name}
           />
         </div>
         <div>
@@ -79,8 +78,7 @@ export default function Home() {
             type="email"
             id="email"
             onChange={handleChange}
-            error={Boolean(errors.email)}
-            errorMessage={errors.email ? errors.email : ''}
+            error={errors?.email}
           />
         </div>
       </div>
@@ -91,8 +89,7 @@ export default function Home() {
             type="text"
             id="age"
             onChange={handleChange}
-            error={Boolean(errors.age)}
-            errorMessage={errors.age ? errors.age : ''}
+            error={errors?.age}
           />
         </div>
         <div>
@@ -101,8 +98,7 @@ export default function Home() {
             type="text"
             id="phone"
             onChange={handleChange}
-            error={Boolean(errors.phone)}
-            errorMessage={errors.phone ? errors.phone : ''}
+            error={errors?.phone}
           />
         </div>
       </div>
@@ -112,8 +108,7 @@ export default function Home() {
           id="details"
           label="add any details or information"
           onChange={handleChange}
-          error={Boolean(errors.details)}
-          errorMessage={errors.details ? errors.details : ''}
+          error={errors?.details}
         ></TextArea>
       </div>
       <div>

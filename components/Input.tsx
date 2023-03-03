@@ -3,13 +3,13 @@ import { InputType } from '../types';
 export default function Input({
   type,
   id,
-  error = false,
-  errorMessage = '',
+  error,
   variablePropName = `aria-describedby`,
   variablePropValue = `${id}_error`,
   ...props
 }: InputType) {
   const variableAttribute = { [variablePropName]: variablePropValue };
+  const booleanError = Boolean(error);
 
   return (
     <>
@@ -22,9 +22,9 @@ export default function Input({
         autoComplete="off"
         spellCheck="false"
         aria-required="true"
-        {...(error ? variableAttribute : '')}
+        {...(booleanError ? variableAttribute : '')}
       />
-      {error && <p id={`${id}_error`}>*{errorMessage}</p>}
+      {booleanError && <p id={`${id}_error`}>*{error ? error : ''}</p>}{' '}
     </>
   );
 }
